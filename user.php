@@ -34,7 +34,7 @@ $response=$client -> index(
 'type'=> 'users',
 'id'=> $user,
 'body' => [
-    'username' => $user
+    'user' => $user
 ]
 ]
 
