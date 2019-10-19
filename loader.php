@@ -1,3 +1,4 @@
+<?php
 use Elasticsearch\Clientbuilder;
 require vendor/autoload.php;
 
