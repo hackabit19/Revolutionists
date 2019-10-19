@@ -80,5 +80,5 @@
   
         echo $response_data;
       }catch(\Exception $e){
-        echo 'err: ' . $e->getMessage();
+        echo 'err: ' . $e  -> getMessage();
       } 
