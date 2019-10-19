@@ -16,7 +16,7 @@ $para=[
 
 ];
 
-$para['body']['query']['match']['username'] = $user;
+$para['body']['query']['match']['user'] = $user;
 
 try{
 
