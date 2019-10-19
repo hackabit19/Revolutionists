@@ -64,7 +64,7 @@
             $current_coords = $source['current_coords'];
             $to_coords = $source['to_coords'];
   
-            $sharers_origin = [
+            $sharer_origin = [
               'latitude' => $current_coords['latitude'],
               'longitude' => $current_coords['longitude']
             ];
@@ -78,7 +78,7 @@
             if(isCoordsOnPath($rider_origin_lat, $rider_origin_lon, $sharer_steps) && canDropoff($rider_origin, $rider_dest, $sharer_origin, $sharer_dest, $rider_steps, $sharer_steps)){
               
               $sharer_details = [
-                'username' => $source['username'],
+                'user' => $source['user'],
                 'from' => $source['from'],
                 'to' => $source['to']
               ];
@@ -98,13 +98,13 @@
       }
       function canDropoff($rider_origin, $rider_dest, $sharer_origin, $sharer_dest, $rider_steps, $sharer_steps) 
       {
-        $hiker_origin_to_hiker_dest = \GeometryLibrary\SphericalUtil::computeDistanceBetween($rider_origin, $rider_dest);
-        $hiker_origin_to_rider_dest = \GeometryLibrary\SphericalUtil::computeDistanceBetween($rider_origin, $sharer_dest);
+        $rider_origin_to_rider_dest = \GeometryLibrary\SphericalUtil::computeDistanceBetween($rider_origin, $rider_dest);
+        $rider_origin_to_rider_dest = \GeometryLibrary\SphericalUtil::computeDistanceBetween($rider_origin, $sharer_dest);
         $is_on_path = false;
-        if($hiker_origin_to_hiker_dest > $hiker_origin_to_rider_dest){ 
+        if($rider_origin_to_rider_dest > $rider_origin_to_rider_dest){ 
           $is_on_path = isCoordsOnPath($sharer_dest['latitude'], $sharer_dest['longitude'], $sharer_steps); 
   
-        }else if($hiker_origin_to_rider_dest > $hiker_origin_to_hiker_dest){ 
+        }else if($rider_origin_to_rider_dest > $rider_origin_to_rider_dest){ 
           $is_on_path = isCoordsOnPath($rider_dest['latitude'], $rider_dest['longitude'], $sharer_steps);
   
         }else{ 
